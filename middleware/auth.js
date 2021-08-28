@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
             req.usuario = usuario;
         } catch (error) {
             console.log(error);
-            console.log('JWT no valido');
+            // console.log('JWT no valido');
         }
 
     }

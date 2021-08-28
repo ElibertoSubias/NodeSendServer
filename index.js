@@ -14,10 +14,9 @@ conectarDB();
 //     origin: process.env.FRONTEND_URL
 // }
 const opcionesCors = {
-    origin:'https://nodesend-cliente-buqdh82mv-elibertosubias.vercel.app', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
+    origin: 'https://nodesend-cliente-buqdh82mv-elibertosubias.vercel.app',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 app.use(cors(opcionesCors));
 
 // Puerto de la app
@@ -36,5 +35,6 @@ app.use('/api/enlaces', require('./routes/enlaces'));
 app.use('/api/archivos', require('./routes/archivos'));
 
 app.listen(port, '0.0.0.0', () => {
+    console.log(process.env.FRONTEND_URL);
     console.log(`El servidor esta funcionando en el puerto ${port}`);
 })
