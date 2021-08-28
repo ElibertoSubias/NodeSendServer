@@ -14,7 +14,7 @@ conectarDB();
 //     origin: process.env.FRONTEND_URL
 // }
 const opcionesCors = {
-    origin: 'https://nodesend-cliente-buqdh82mv-elibertosubias.vercel.app',
+    origin: 'nodesend-cliente-buqdh82mv-elibertosubias.vercel.app',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 app.use(cors(opcionesCors));
