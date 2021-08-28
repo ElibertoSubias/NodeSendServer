@@ -14,7 +14,7 @@ conectarDB();
 //     origin: process.env.FRONTEND_URL
 // }
 const opcionesCors = {
-    origin:'ttps://nodesend-cliente-buqdh82mv-elibertosubias.vercel.app', 
+    origin:'https://nodesend-cliente-buqdh82mv-elibertosubias.vercel.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
