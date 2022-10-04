@@ -23,8 +23,8 @@ exports.subirArchivo = async (req, res, next) =>  {
         })
     };
 
-    const upload = multer(configuracionMulter).single('archivo');    
-    
+    const upload = multer(configuracionMulter).single('archivo');
+
     upload( req, res, async (error) => {
         // console.log(req.file);
 
@@ -39,8 +39,9 @@ exports.subirArchivo = async (req, res, next) =>  {
 
 exports.eliminarArchivo = async (req, res, next) =>  {
     try {
-        fs.unlinkSync(__dirname+`/../uploads/${req.archivo}`);
-        // console.log('Archivo eliminado');
+        const { archivo } = req.params;
+        fs.unlinkSync(__dirname+`/../uploads/${archivo}`);
+        res.json();
     } catch (error) {
         console.log(error);
     }
@@ -65,7 +66,7 @@ exports.descargar = async (req, res, next) => {
     const { descargas, nombre } = enlace;
 
     if(descargas === 1) {
-        
+
         // Eliminar el archivo
         req.archivo = nombre;
 
