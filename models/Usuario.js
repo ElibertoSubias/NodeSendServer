@@ -14,6 +14,16 @@ const usuariosSchema = new Schema({
         required: true,
         trim: true
     },
+    edad: {
+        type: Number,
+        required: true,
+        trim: true
+    },
+    yonke: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Yonkes',
+        default: null
+    },
     password : {
         type: String,
         required: true,

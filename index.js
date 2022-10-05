@@ -31,10 +31,9 @@ app.use( express.static('uploads') );
 // Rutas de la app
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/enlaces', require('./routes/enlaces'));
-app.use('/api/archivos', require('./routes/archivos'));
+app.use('/api/yonkes', require('./routes/yonkes'));
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(process.env.FRONTEND_URL);
+    // console.log(process.env.FRONTEND_URL);
     console.log(`El servidor esta funcionando en el puerto ${port}`);
 })

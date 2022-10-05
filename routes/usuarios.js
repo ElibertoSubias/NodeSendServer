@@ -7,6 +7,7 @@ router.post('/',
     [
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('email', 'El email no es válido').isEmail(),
+        check('edad', 'La edad es obligatoria').not().isEmpty(),
         check('password', 'El password debe sér de almenos 6 caracteres').isLength({ min : 6 }),
     ],
     usuarioController.nuevoUsuario

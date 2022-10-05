@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variable.env'});
 
 module.exports = (req, res, next) => {
-    
+
     const authHeader = req.get('Authorization');
 
     if(authHeader){
@@ -12,7 +12,6 @@ module.exports = (req, res, next) => {
 
         //Comprobar el JWT
         try {
-
             const usuario = jwt.verify(token, process.env.SECRETA);
             req.usuario = usuario;
         } catch (error) {
@@ -21,6 +20,6 @@ module.exports = (req, res, next) => {
         }
 
     }
-    
+
     return next();
 }
