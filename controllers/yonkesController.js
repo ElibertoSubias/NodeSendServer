@@ -90,11 +90,6 @@ exports.modificarYonke = async (req, res, next) => {
 
     try {
 
-        const errores = validationResult(req);
-        if(!errores.isEmpty()) {
-            return res.status(400).json({errores: errores.array()});
-        }
-
         // Si el usuario esta autenticado
         if (req.usuario) {
 
@@ -133,4 +128,38 @@ exports.modificarYonke = async (req, res, next) => {
         return res.status(500).json({error: "Ocurrio un error al guardar la información."});
     }
 
+}
+
+exports.eliminarYonke = async (req, res, next) => {
+    try {
+
+        // Si el usuario esta autenticado
+        if (req.usuario) {
+
+            // Crear un objeto de Enlace
+            const { id } = req.params;
+
+            const usuario = await Usuario.findOne({ _id: req.usuario.id });
+
+            const yonke = await Yonkes.findOne({ autor: req.usuario.id });
+            const direccion = await Direcciones.findOne(yonke.direccion);
+
+            if (yonke && yonke._id == id) {
+
+                await Yonkes.findOneAndRemove(yonke.id);
+                await Direcciones.findOneAndRemove(direccion.id);
+                usuario.yonke = null;
+                await usuario.save();
+                return res.status(200).json({msj: "Yonke eliminado"});
+
+            } else {
+                return res.status(500).json({error: "Error al eliminar el yonke."});
+            }
+
+        }
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error: "Ocurrio un error."});
+    }
 }

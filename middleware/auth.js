@@ -15,8 +15,7 @@ module.exports = (req, res, next) => {
             const usuario = jwt.verify(token, process.env.SECRETA);
             req.usuario = usuario;
         } catch (error) {
-            console.log(error);
-            // console.log('JWT no valido');
+            return res.status(401).json({ errores: "Usuario no autorizado." });
         }
 
     }
